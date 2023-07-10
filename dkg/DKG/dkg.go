@@ -1,4 +1,4 @@
-package dkg
+package DKG
 
 import (
 	"fmt"
@@ -15,8 +15,8 @@ type Node struct {
 	Id                 int
 	ip                 string
 	dkg                *dkg.DistKeyGenerator
-	pubKey             kyber.Point
-	privKey            kyber.Scalar
+	PubKey             kyber.Point
+	PrivKey            kyber.Scalar
 	Ips                map[int]string
 	deals              []*dkg.Deal
 	resps              []*dkg.Response
@@ -32,7 +32,7 @@ var suiteG2 = bn256.NewSuiteG2()
 // Use the dkg/pedersen API to generate a public key and its corresponding private key that is shared among nodes.
 // It shows the different phases that each node must perform in order to construct the private shares that will form the final private key.
 
-func DKG(n int) ([]*Node, kyber.Point, []string) {
+func DKG(n int) ([]*Node, kyber.Point, []string, []kyber.Point) {
 	t := n/2 + 1
 	nodes := make([]*Node, n)
 	pubKeys := make([]kyber.Point, n)
@@ -49,17 +49,20 @@ func DKG(n int) ([]*Node, kyber.Point, []string) {
 		nodes[i] = &Node{
 			Id:      i,
 			ip:      ip,
-			pubKey:  pubKey,
-			privKey: privKey,
+			PubKey:  pubKey,
+			PrivKey: privKey,
 			Ips:     make(map[int]string, 0),
 			deals:   make([]*dkg.Deal, 0),
 			resps:   make([]*dkg.Response, 0),
 		}
+
+		fmt.Println("new local public key:", pubKey)
+		fmt.Println("new local private key:", privKey)
 	}
 
 	// 2. Create the DKGs on each node
 	for i, node := range nodes {
-		dkg, err := dkg.NewDistKeyGenerator(suiteG2, nodes[i].privKey, pubKeys, t)
+		dkg, err := dkg.NewDistKeyGenerator(suiteG2, nodes[i].PrivKey, pubKeys, t)
 		if err != nil {
 			panic(fmt.Errorf("===>[ERROR from DKG step 2]NewDistKeyGenerator() failed:%s", err))
 		}
@@ -182,8 +185,7 @@ func DKG(n int) ([]*Node, kyber.Point, []string) {
 		shares[i] = distrKey.PriShare()
 		publicKey = distrKey.Public()
 		node.SecretShare = distrKey.PriShare()
-		fmt.Println("new distributed secret key:", node.SecretShare)
-		fmt.Println("new distributed public key:", publicKey)
+		fmt.Println("new distributed secret share is:", node.SecretShare)
 	}
 
 	// 8. Recover
@@ -204,8 +206,8 @@ func DKG(n int) ([]*Node, kyber.Point, []string) {
 
 	// 9. bls signature
 	for i := range nodes {
-		sig, _ := bls.Sign(suite, nodes[i].privKey, message)
-		err := bls.Verify(suite, nodes[i].pubKey, message, sig)
+		sig, _ := bls.Sign(suite, nodes[i].PrivKey, message)
+		err := bls.Verify(suite, nodes[i].PubKey, message, sig)
 
 		if err != nil {
 			panic(fmt.Errorf("===>[ERROR from DKG step 9.]Verify() failed:%s", err))
@@ -214,5 +216,5 @@ func DKG(n int) ([]*Node, kyber.Point, []string) {
 		}
 	}
 
-	return nodes, publicKey, ips
+	return nodes, publicKey, ips, pubKeys
 }

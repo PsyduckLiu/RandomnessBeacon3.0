@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package groupMsgpb;
+
+option go_package = "../groupMsgpb";
+
+// The GroupMsgHandle service definition.
+service GroupMsgHandle {
+  // Handles a received GroupMsg message
+  rpc GroupMsgReceive (GroupMsg) returns (GroupMsgResponse) {}
+}
+
+message GroupMsg {
+  int64 groupA = 1;
+  int64 groupB = 2;
+  int64 groupC = 3;
+	int64 timeT = 4;
+	int64 mkA = 5;
+  int64 mkB = 6;
+  int64 mkC = 7;
+  int64 rkA = 8;
+  int64 rkB = 9;
+  int64 rkC  = 10;
+	int64 pA = 11;
+  int64 pB = 12;
+  int64 pC  = 13;
+}
+
+message GroupMsgResponse {}
