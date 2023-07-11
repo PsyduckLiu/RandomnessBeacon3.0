@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package tcPartSigMsgpb;
+
+option go_package = "../tcPartSigMsgpb";
+
+// The TcPartSigMsgHandle service definition.
+service TcPartSigMsgHandle {
+  // Handles a received tcPartSigMsg message
+  rpc TcPartSigMsgReceive (TcPartSigMsg) returns (TcPartSigMsgResponse) {}
+}
+
+// The request message containing the user's name.
+message TcPartSigMsg {
+  int64 round = 1;
+  int64 id = 2;
+  string sig = 3;
+}
+
+message TcPartSigMsgResponse {}

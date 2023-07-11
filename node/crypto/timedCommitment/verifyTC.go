@@ -60,12 +60,20 @@ func VerifyTC(t int, maskedMsg *big.Int, g, m_k, r_k, p, h, M_k, a1, a2 *binaryq
 	comp2, _ := result3.Composition(result4)
 
 	if !comp1.Equal(a1) {
-		fmt.Println("===>[VerifyTC]test1 error")
-		return false
+		if (comp1.GetA() == a1.GetA()) && (comp1.GetB() == a1.GetB()) && (comp1.GetC() == a1.GetC()) {
+			fmt.Println("===>[VerifyTC]test1 pass")
+		} else {
+			fmt.Println("===>[VerifyTC]test1 error")
+			return false
+		}
 	}
 	if !comp2.Equal(a2) {
-		fmt.Println("===>[VerifyTC]test2 error")
-		return false
+		if (comp2.GetA() == a2.GetA()) && (comp2.GetB() == a2.GetB()) && (comp2.GetC() == a2.GetC()) {
+			fmt.Println("===>[VerifyTC]test2 pass")
+		} else {
+			fmt.Println("===>[VerifyTC]test2 error")
+			return false
+		}
 	}
 
 	return true

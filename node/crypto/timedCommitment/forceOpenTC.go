@@ -7,7 +7,7 @@ import (
 	"node/util"
 )
 
-func ForcedOpen(t int, maskedMsg *big.Int, h *binaryquadraticform.BQuadraticForm) {
+func ForcedOpen(t int, maskedMsg *big.Int, h *binaryquadraticform.BQuadraticForm) *big.Int {
 	bigOne := big.NewInt(1)
 	bigTwo := big.NewInt(2)
 
@@ -27,4 +27,6 @@ func ForcedOpen(t int, maskedMsg *big.Int, h *binaryquadraticform.BQuadraticForm
 	msgComputed.Xor(maskedMsg, hashedRk)
 
 	fmt.Println("===>[ForcedOpen]opened msg is", msgComputed)
+
+	return msgComputed
 }

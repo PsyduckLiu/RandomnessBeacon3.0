@@ -20,6 +20,8 @@ message SetupMsg {
   string GlobalPubKey = 7;
   repeated string ips = 8;
   repeated string pubKeys = 9;
+  string pubPolyBase = 10;
+  repeated string pubPolyCommit = 11;
 }
 
 message SetupMsgResponse {}

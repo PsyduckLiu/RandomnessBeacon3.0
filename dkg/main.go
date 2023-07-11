@@ -3,12 +3,15 @@ package main
 import (
 	"bytes"
 	"context"
+	"crypto/rand"
 	"dkg/DKG"
 	"dkg/config"
 	"dkg/msg/groupMsgpb"
+	"dkg/msg/rMsgpb"
 	"dkg/msg/setupMsgpb"
 	"encoding/base64"
 	"fmt"
+	"math/big"
 	"time"
 
 	"go.dedis.ch/kyber/v3"
@@ -20,7 +23,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-func SendInitMsg(nodes []*DKG.Node, publickey kyber.Point, ips []string, pubKeys []kyber.Point) {
+func SendInitMsg(nodes []*DKG.Node, publickey kyber.Point, ips []string, pubKeys []kyber.Point, pubPoly *share.PubPoly) {
 	var pksString []string
 
 	for _, pk := range pubKeys {
@@ -84,10 +87,59 @@ func SendInitMsg(nodes []*DKG.Node, publickey kyber.Point, ips []string, pubKeys
 			fmt.Println("GlobalPubKeyWriter Length is:", len)
 		}
 
+		pubPolyBase, pubPolyCommits := pubPoly.Info()
+
+		pubPolyBaseBuf := new(bytes.Buffer)
+		len, err = pubPolyBase.MarshalTo(pubPolyBaseBuf)
+		if err != nil {
+			fmt.Println("===>[!!!Generator]pubPolyBaseBuf MarshalTo:", err)
+			continue
+		} else {
+			fmt.Println("pubPolyBaseBuf Length is:", len)
+		}
+
+		var PubPolyCommit []string
+		for _, pubPolyCommit := range pubPolyCommits {
+			pubPolyCommitBuf := new(bytes.Buffer)
+			len, err = pubPolyCommit.MarshalTo(pubPolyCommitBuf)
+			if err != nil {
+				fmt.Println("===>[!!!Generator]pubPolyCommitBuf MarshalTo:", err)
+				continue
+			} else {
+				fmt.Println("pubPolyCommitBuf Length is:", len)
+			}
+
+			PubPolyCommit = append(PubPolyCommit, base64.StdEncoding.EncodeToString(pubPolyCommitBuf.Bytes()))
+		}
+
 		_, err = tc.SetupMsgReceive(ctx, &setupMsgpb.SetupMsg{Id: int64(i), Ip: ip,
 			LocalPubKey: base64.StdEncoding.EncodeToString(LocalPubKeyBuf.Bytes()), LocalPrivKey: base64.StdEncoding.EncodeToString(LocalPrivKeyBuf.Bytes()),
-			SecretShareI: int64(nodes[i].SecretShare.I), SecretShareV: base64.StdEncoding.EncodeToString(SecretShareVBuf.Bytes()), GlobalPubKey: base64.StdEncoding.EncodeToString(GlobalPubKeyBuf.Bytes()),
-			Ips: ips, PubKeys: pksString})
+			SecretShareI: int64(nodes[i].SecretShare.I), SecretShareV: base64.StdEncoding.EncodeToString(SecretShareVBuf.Bytes()),
+			GlobalPubKey: base64.StdEncoding.EncodeToString(GlobalPubKeyBuf.Bytes()),
+			Ips:          ips, PubKeys: pksString,
+			PubPolyBase: base64.StdEncoding.EncodeToString(pubPolyBaseBuf.Bytes()), PubPolyCommit: PubPolyCommit})
+		if err != nil {
+			fmt.Println("Send to", ip)
+			fmt.Println("===>[!!!Collector]Failed to response:", err)
+			continue
+		}
+	}
+}
+
+func SendRMsg(ips []string, r0 *big.Int) {
+	for i, ip := range ips {
+		fmt.Printf("Send r to node %d\n", i)
+
+		conn, err := grpc.Dial(ip, grpc.WithTransportCredentials(insecure.NewCredentials()))
+		if err != nil {
+			fmt.Println("===>[!!!Generator]did not connect:", err)
+			continue
+		}
+
+		tc := rMsgpb.NewRMsgHandleClient(conn)
+		ctx, _ := context.WithTimeout(context.Background(), time.Second)
+
+		_, err = tc.RMsgReceive(ctx, &rMsgpb.RMsg{R0: r0.String()})
 		if err != nil {
 			fmt.Println("Send to", ip)
 			fmt.Println("===>[!!!Collector]Failed to response:", err)
@@ -124,6 +176,7 @@ func SendGroupMsg(ips []string, groupA, groupB, groupC, timeT, mkA, mkB, mkC, rk
 func main() {
 	var err error
 	var shares []*share.PriShare
+	bigTwo := big.NewInt(2)
 	n := 4
 	t := n/2 + 1
 
@@ -142,6 +195,7 @@ func main() {
 	}
 	pubPoly := priPoly.Commit(suite.G2().Point().Base())
 	fmt.Println("Secret key is:", priPoly.Secret())
+	fmt.Println("pubPoly is:", pubPoly.Commit())
 	fmt.Println("Threshold is:", pubPoly.Threshold())
 	fmt.Println("Public key is:", publicKey)
 
@@ -187,6 +241,17 @@ func main() {
 	mkA, mkB, mkC, rkA, rkB, rkC := config.GetPublicGroupParameter()
 	pA, pB, pC := config.GetPublicParameterProof()
 
-	SendInitMsg(nodes, publicKey, ips, pubKeys)
+	upper := new(big.Int)
+	upper.Exp(bigTwo, big.NewInt(50), nil)
+	r0, err := rand.Int(rand.Reader, upper)
+	if err != nil {
+		panic(fmt.Errorf("===>[ERROR from GenerateTC]Generate random message failed:%s", err))
+	}
+	fmt.Println("===>[GenerateTC]R0 is", r0)
+
+	SendInitMsg(nodes, publicKey, ips, pubKeys, pubPoly)
 	SendGroupMsg(ips, groupA, groupB, groupC, timeT, mkA, mkB, mkC, rkA, rkB, rkC, pA, pB, pC)
+
+	time.Sleep(2 * time.Second)
+	SendRMsg(ips, r0)
 }

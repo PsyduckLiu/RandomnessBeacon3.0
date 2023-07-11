@@ -96,5 +96,6 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	alphaE.Mul(alphaE, alpha)
 	z.Sub(z, alphaE)
 
+	fmt.Println("[Generate TC]", z, alpha, e, h.GetA(), h.GetB(), h.GetC(), w)
 	return maskedMsg, h, M_k, a1, a2, z
 }

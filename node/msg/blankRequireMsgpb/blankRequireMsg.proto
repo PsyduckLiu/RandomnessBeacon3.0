@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package blankRequireMsgpb;
+
+option go_package = "../blankRequireMsgpb";
+
+// The BlankRequireMsgHandle service definition.
+service BlankRequireMsgHandle {
+  // Handles a received BlankRequireMsg message
+  rpc BlankRequireMsgReceive (BlankRequireMsg) returns (BlankRequireMsgResponse) {}
+}
+
+message BlankRequireMsg {
+  int64 requireRound = 1;
+  int64 currentRound = 2;
+  int64 id = 3; 
+  string sig = 4;
+}
+
+message BlankRequireMsgResponse {}

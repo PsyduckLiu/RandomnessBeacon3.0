@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package rMsgpb;
+
+option go_package = "../rMsgpb";
+
+// The RMsgHandle service definition.
+service RMsgHandle {
+  // Handles a received RMsg message
+  rpc RMsgReceive (RMsg) returns (RMsgResponse) {}
+}
+
+message RMsg {
+  string r0 = 1;
+}
+
+message RMsgResponse {}
