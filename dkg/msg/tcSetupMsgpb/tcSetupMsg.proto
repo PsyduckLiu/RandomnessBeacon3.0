@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package tcSetupMsgpb;
+
+option go_package = "../tcSetupMsgpb";
+
+// The TcSetupMsgHandle service definition.
+service TcSetupMsgHandle {
+  // Handles a received TcSetupMsg message
+  rpc TcSetupMsgReceive (TcSetupMsg) returns (TcSetupMsgResponse) {}
+}
+
+message TcSetupMsg {
+  int64 id = 1;
+  string ip = 2;
+  string localPubKey = 3;
+  string localPrivKey = 4;
+  int64 SecretShareI = 5;
+  string SecretShareV = 6;
+  string GlobalPubKey = 7;
+  repeated string ips = 8;
+  repeated string pubKeys = 9;
+  string pubPolyBase = 10;
+  repeated string pubPolyCommit = 11;
+}
+
+message TcSetupMsgResponse {}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package tcCompleteSigMsgpb;
+
+option go_package = "../tcCompleteSigMsgpb";
+
+// The TcCompleteSigMsgHandle service definition.
+service TcCompleteSigMsgHandle {
+  // Handles a received tcCompleteSigMsg message
+  rpc TcCompleteSigMsgReceive (TcCompleteSigMsg) returns (TcCompleteSigMsgResponse) {}
+}
+
+// The request message containing the user's name.
+message TcCompleteSigMsg {
+  int64 round = 1;
+  int64 id = 2;
+  string sig = 3;
+}
+
+message TcCompleteSigMsgResponse {}

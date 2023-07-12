@@ -16,7 +16,7 @@ message BlankReplyMsg {
   string HA = 3;
   string HB = 4;
   string HC = 5;
-  string fullSig = 6;
+  string completeSig = 6;
 }
 
 message BlankReplyMsgResponse {}

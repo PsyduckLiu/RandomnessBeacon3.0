@@ -60,7 +60,7 @@ func VerifyTC(t int, maskedMsg *big.Int, g, m_k, r_k, p, h, M_k, a1, a2 *binaryq
 	comp2, _ := result3.Composition(result4)
 
 	if !comp1.Equal(a1) {
-		if (comp1.GetA() == a1.GetA()) && (comp1.GetB() == a1.GetB()) && (comp1.GetC() == a1.GetC()) {
+		if (comp1.GetA().Cmp(a1.GetA()) == 0) && (comp1.GetB().Cmp(a1.GetB()) == 0) && (comp1.GetC().Cmp(a1.GetC()) == 0) {
 			fmt.Println("===>[VerifyTC]test1 pass")
 		} else {
 			fmt.Println("===>[VerifyTC]test1 error")

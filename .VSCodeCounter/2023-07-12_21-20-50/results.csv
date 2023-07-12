@@ -1,0 +1,63 @@
+"filename", "language", "Markdown", "Makefile", "Go Module File", "Go", "Go Checksum File", "YAML", "comment", "blank", "total"
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\Readme.md", "Markdown", 8, 0, 0, 0, 0, 0, 0, 7, 15
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\DKG\dkg.go", "Go", 0, 0, 0, 308, 0, 0, 35, 52, 395
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\Makefile", "Makefile", 0, 7, 0, 0, 0, 0, 0, 3, 10
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\config.yml", "YAML", 0, 0, 0, 0, 0, 13, 0, 1, 14
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\initConfig.go", "Go", 0, 0, 0, 58, 0, 0, 4, 14, 76
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\readConfig.go", "Go", 0, 0, 0, 37, 0, 0, 8, 15, 60
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\writeConfig.go", "Go", 0, 0, 0, 26, 0, 0, 4, 8, 38
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\README.md", "Markdown", 67, 0, 0, 0, 0, 0, 0, 26, 93
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\binaryquadratic.go", "Go", 0, 0, 0, 560, 0, 0, 86, 44, 690
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\guide.go", "Go", 0, 0, 0, 29, 0, 0, 2, 9, 40
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\go.mod", "Go Module File", 0, 0, 31, 0, 0, 0, 0, 4, 35
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\go.sum", "Go Checksum File", 0, 0, 0, 0, 508, 0, 0, 1, 509
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\main.go", "Go", 0, 0, 0, 307, 0, 0, 8, 57, 372
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\errSetupMsgpb\errSetupMsg.pb.go", "Go", 0, 0, 0, 218, 0, 0, 9, 29, 256
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\errSetupMsgpb\errSetupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\groupMsgpb\groupMsg.pb.go", "Go", 0, 0, 0, 268, 0, 0, 9, 36, 313
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\groupMsgpb\groupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\rMsgpb\rMsg.pb.go", "Go", 0, 0, 0, 167, 0, 0, 9, 24, 200
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\rMsgpb\rMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\tcSetupMsgpb\tcSetupMsg.pb.go", "Go", 0, 0, 0, 260, 0, 0, 9, 34, 303
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\tcSetupMsgpb\tcSetupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\util\util.go", "Go", 0, 0, 0, 11, 0, 0, 1, 4, 16
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\Makefile", "Makefile", 0, 7, 0, 0, 0, 0, 0, 3, 10
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\blankMsgHandler.go", "Go", 0, 0, 0, 237, 0, 0, 13, 44, 294
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\README.md", "Markdown", 67, 0, 0, 0, 0, 0, 0, 26, 93
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\binaryquadratic.go", "Go", 0, 0, 0, 560, 0, 0, 86, 44, 690
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\guide.go", "Go", 0, 0, 0, 29, 0, 0, 2, 9, 40
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\forceOpenTC.go", "Go", 0, 0, 0, 26, 0, 0, 0, 7, 33
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\generateTC.go", "Go", 0, 0, 0, 81, 0, 0, 7, 14, 102
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\verifyGroup.go", "Go", 0, 0, 0, 50, 0, 0, 2, 10, 62
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\verifyTC.go", "Go", 0, 0, 0, 69, 0, 0, 1, 11, 81
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\errorMsgHandler.go", "Go", 0, 0, 0, 101, 0, 0, 7, 22, 130
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\go.mod", "Go Module File", 0, 0, 29, 0, 0, 0, 0, 3, 32
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\go.sum", "Go Checksum File", 0, 0, 0, 0, 507, 0, 0, 1, 508
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\main.go", "Go", 0, 0, 0, 243, 0, 0, 14, 34, 291
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankReplyMsgpb\blankReplyMsg.pb.go", "Go", 0, 0, 0, 216, 0, 0, 9, 29, 254
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankReplyMsgpb\blankReplyMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankRequireMsgpb\blankRequireMsg.pb.go", "Go", 0, 0, 0, 201, 0, 0, 9, 27, 237
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankRequireMsgpb\blankRequireMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errCompleteSigMsgpb\errCompleteSigMsg.pb.go", "Go", 0, 0, 0, 184, 0, 0, 10, 25, 219
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errCompleteSigMsgpb\errCompleteSigMsg_grpc.pb.go", "Go", 0, 0, 0, 71, 0, 0, 23, 15, 109
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errMsgpb\errMsg.pb.go", "Go", 0, 0, 0, 193, 0, 0, 9, 27, 229
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errMsgpb\errMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errSetupMsgpb\errSetupMsg.pb.go", "Go", 0, 0, 0, 218, 0, 0, 9, 29, 256
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errSetupMsgpb\errSetupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\groupMsgpb\groupMsg.pb.go", "Go", 0, 0, 0, 268, 0, 0, 9, 36, 313
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\groupMsgpb\groupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\rMsgpb\rMsg.pb.go", "Go", 0, 0, 0, 167, 0, 0, 9, 24, 200
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\rMsgpb\rMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcCompleteSigMsgpb\tcCompleteSigMsg.pb.go", "Go", 0, 0, 0, 192, 0, 0, 10, 26, 228
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcCompleteSigMsgpb\tcCompleteSigMsg_grpc.pb.go", "Go", 0, 0, 0, 71, 0, 0, 23, 15, 109
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcMsgpb\tcMsg.pb.go", "Go", 0, 0, 0, 299, 0, 0, 10, 40, 349
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcMsgpb\tcMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcPartSigMsgpb\tcPartSigMsg.pb.go", "Go", 0, 0, 0, 189, 0, 0, 10, 26, 225
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcPartSigMsgpb\tcPartSigMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcSetupMsgpb\tcSetupMsg.pb.go", "Go", 0, 0, 0, 260, 0, 0, 9, 34, 303
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcSetupMsgpb\tcSetupMsg_grpc.pb.go", "Go", 0, 0, 0, 70, 0, 0, 23, 15, 108
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\normalMsgHandler.go", "Go", 0, 0, 0, 221, 0, 0, 20, 41, 282
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\setupMsgHadler.go", "Go", 0, 0, 0, 196, 0, 0, 26, 38, 260
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\util\util.go", "Go", 0, 0, 0, 11, 0, 0, 1, 4, 16
+"\\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\variables.go", "Go", 0, 0, 0, 46, 0, 0, 38, 36, 120
+"Total", "-", 142, 14, 60, 7558, 1015, 13, 849, 1263, 10914

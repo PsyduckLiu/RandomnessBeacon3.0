@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package errMsgpb;
+
+option go_package = "../errMsgpb";
+
+// The ErrMsgHandle service definition.
+service ErrMsgHandle {
+  // Handles a received ErrMsg message
+  rpc ErrMsgReceive (ErrMsg) returns (ErrMsgResponse) {}
+}
+
+message ErrMsg {
+  int64 id = 1;
+  int64 round = 2;
+  bool err = 3;
+  string sig = 4;
+}
+
+message ErrMsgResponse {}

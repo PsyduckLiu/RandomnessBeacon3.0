@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package errCompleteSigMsgpb;
+
+option go_package = "../errCompleteSigMsgpb";
+
+// The ErrCompleteSigMsgHandle service definition.
+service ErrCompleteSigMsgHandle {
+  // Handles a received errCompleteSigMsg message
+  rpc ErrCompleteSigMsgReceive (ErrCompleteSigMsg) returns (ErrCompleteSigMsgResponse) {}
+}
+
+// The request message containing the user's name.
+message ErrCompleteSigMsg {
+  int64 round = 1;
+  string sig = 2;
+}
+
+message ErrCompleteSigMsgResponse {}

@@ -1,0 +1,121 @@
+Date : 2023-07-12 21:20:50
+Directory : \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0
+Total : 61 files,  8802 codes, 849 comments, 1263 blanks, all 10914 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Go               |         51 |      7,558 |        849 |      1,188 |      9,595 |
+| Go Checksum File |          2 |      1,015 |          0 |          2 |      1,017 |
+| Markdown         |          3 |        142 |          0 |         59 |        201 |
+| Go Module File   |          2 |         60 |          0 |          7 |         67 |
+| Makefile         |          2 |         14 |          0 |          6 |         20 |
+| YAML             |          1 |         13 |          0 |          1 |         14 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                       |         61 |      8,802 |        849 |      1,263 |     10,914 |
+| . (Files)                                                                                                               |          1 |          8 |          0 |          7 |         15 |
+| dkg                                                                                                                     |         21 |      3,155 |        276 |        421 |      3,852 |
+| dkg (Files)                                                                                                             |          4 |        853 |          8 |         65 |        926 |
+| dkg\DKG                                                                                                                 |          1 |        308 |         35 |         52 |        395 |
+| dkg\config                                                                                                              |          4 |        134 |         16 |         38 |        188 |
+| dkg\crypto                                                                                                              |          3 |        656 |         88 |         79 |        823 |
+| dkg\crypto\binaryquadraticform                                                                                          |          3 |        656 |         88 |         79 |        823 |
+| dkg\msg                                                                                                                 |          8 |      1,193 |        128 |        183 |      1,504 |
+| dkg\msg\errSetupMsgpb                                                                                                   |          2 |        288 |         32 |         44 |        364 |
+| dkg\msg\groupMsgpb                                                                                                      |          2 |        338 |         32 |         51 |        421 |
+| dkg\msg\rMsgpb                                                                                                          |          2 |        237 |         32 |         39 |        308 |
+| dkg\msg\tcSetupMsgpb                                                                                                    |          2 |        330 |         32 |         49 |        411 |
+| dkg\util                                                                                                                |          1 |         11 |          1 |          4 |         16 |
+| node                                                                                                                    |         39 |      5,639 |        573 |        835 |      7,047 |
+| node (Files)                                                                                                            |          9 |      1,587 |        118 |        222 |      1,927 |
+| node\crypto                                                                                                             |          7 |        882 |         98 |        121 |      1,101 |
+| node\crypto\binaryquadraticform                                                                                         |          3 |        656 |         88 |         79 |        823 |
+| node\crypto\timedCommitment                                                                                             |          4 |        226 |         10 |         42 |        278 |
+| node\msg                                                                                                                |         22 |      3,159 |        356 |        488 |      4,003 |
+| node\msg\blankReplyMsgpb                                                                                                |          2 |        286 |         32 |         44 |        362 |
+| node\msg\blankRequireMsgpb                                                                                              |          2 |        271 |         32 |         42 |        345 |
+| node\msg\errCompleteSigMsgpb                                                                                            |          2 |        255 |         33 |         40 |        328 |
+| node\msg\errMsgpb                                                                                                       |          2 |        263 |         32 |         42 |        337 |
+| node\msg\errSetupMsgpb                                                                                                  |          2 |        288 |         32 |         44 |        364 |
+| node\msg\groupMsgpb                                                                                                     |          2 |        338 |         32 |         51 |        421 |
+| node\msg\rMsgpb                                                                                                         |          2 |        237 |         32 |         39 |        308 |
+| node\msg\tcCompleteSigMsgpb                                                                                             |          2 |        263 |         33 |         41 |        337 |
+| node\msg\tcMsgpb                                                                                                        |          2 |        369 |         33 |         55 |        457 |
+| node\msg\tcPartSigMsgpb                                                                                                 |          2 |        259 |         33 |         41 |        333 |
+| node\msg\tcSetupMsgpb                                                                                                   |          2 |        330 |         32 |         49 |        411 |
+| node\util                                                                                                               |          1 |         11 |          1 |          4 |         16 |
++-------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                                | language         | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\Readme.md                                                 | Markdown         |          8 |          0 |          7 |         15 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\DKG\dkg.go                                            | Go               |        308 |         35 |         52 |        395 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\Makefile                                              | Makefile         |          7 |          0 |          3 |         10 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\config.yml                                     | YAML             |         13 |          0 |          1 |         14 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\initConfig.go                                  | Go               |         58 |          4 |         14 |         76 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\readConfig.go                                  | Go               |         37 |          8 |         15 |         60 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\config\writeConfig.go                                 | Go               |         26 |          4 |          8 |         38 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\README.md                  | Markdown         |         67 |          0 |         26 |         93 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\binaryquadratic.go         | Go               |        560 |         86 |         44 |        690 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\crypto\binaryquadraticform\guide.go                   | Go               |         29 |          2 |          9 |         40 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\go.mod                                                | Go Module File   |         31 |          0 |          4 |         35 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\go.sum                                                | Go Checksum File |        508 |          0 |          1 |        509 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\main.go                                               | Go               |        307 |          8 |         57 |        372 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\errSetupMsgpb\errSetupMsg.pb.go                   | Go               |        218 |          9 |         29 |        256 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\errSetupMsgpb\errSetupMsg_grpc.pb.go              | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\groupMsgpb\groupMsg.pb.go                         | Go               |        268 |          9 |         36 |        313 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\groupMsgpb\groupMsg_grpc.pb.go                    | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\rMsgpb\rMsg.pb.go                                 | Go               |        167 |          9 |         24 |        200 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\rMsgpb\rMsg_grpc.pb.go                            | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\tcSetupMsgpb\tcSetupMsg.pb.go                     | Go               |        260 |          9 |         34 |        303 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\msg\tcSetupMsgpb\tcSetupMsg_grpc.pb.go                | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\dkg\util\util.go                                          | Go               |         11 |          1 |          4 |         16 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\Makefile                                             | Makefile         |          7 |          0 |          3 |         10 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\blankMsgHandler.go                                   | Go               |        237 |         13 |         44 |        294 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\README.md                 | Markdown         |         67 |          0 |         26 |         93 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\binaryquadratic.go        | Go               |        560 |         86 |         44 |        690 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\binaryquadraticform\guide.go                  | Go               |         29 |          2 |          9 |         40 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\forceOpenTC.go                | Go               |         26 |          0 |          7 |         33 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\generateTC.go                 | Go               |         81 |          7 |         14 |        102 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\verifyGroup.go                | Go               |         50 |          2 |         10 |         62 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\crypto\timedCommitment\verifyTC.go                   | Go               |         69 |          1 |         11 |         81 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\errorMsgHandler.go                                   | Go               |        101 |          7 |         22 |        130 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\go.mod                                               | Go Module File   |         29 |          0 |          3 |         32 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\go.sum                                               | Go Checksum File |        507 |          0 |          1 |        508 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\main.go                                              | Go               |        243 |         14 |         34 |        291 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankReplyMsgpb\blankReplyMsg.pb.go              | Go               |        216 |          9 |         29 |        254 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankReplyMsgpb\blankReplyMsg_grpc.pb.go         | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankRequireMsgpb\blankRequireMsg.pb.go          | Go               |        201 |          9 |         27 |        237 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\blankRequireMsgpb\blankRequireMsg_grpc.pb.go     | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errCompleteSigMsgpb\errCompleteSigMsg.pb.go      | Go               |        184 |         10 |         25 |        219 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errCompleteSigMsgpb\errCompleteSigMsg_grpc.pb.go | Go               |         71 |         23 |         15 |        109 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errMsgpb\errMsg.pb.go                            | Go               |        193 |          9 |         27 |        229 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errMsgpb\errMsg_grpc.pb.go                       | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errSetupMsgpb\errSetupMsg.pb.go                  | Go               |        218 |          9 |         29 |        256 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\errSetupMsgpb\errSetupMsg_grpc.pb.go             | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\groupMsgpb\groupMsg.pb.go                        | Go               |        268 |          9 |         36 |        313 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\groupMsgpb\groupMsg_grpc.pb.go                   | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\rMsgpb\rMsg.pb.go                                | Go               |        167 |          9 |         24 |        200 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\rMsgpb\rMsg_grpc.pb.go                           | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcCompleteSigMsgpb\tcCompleteSigMsg.pb.go        | Go               |        192 |         10 |         26 |        228 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcCompleteSigMsgpb\tcCompleteSigMsg_grpc.pb.go   | Go               |         71 |         23 |         15 |        109 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcMsgpb\tcMsg.pb.go                              | Go               |        299 |         10 |         40 |        349 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcMsgpb\tcMsg_grpc.pb.go                         | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcPartSigMsgpb\tcPartSigMsg.pb.go                | Go               |        189 |         10 |         26 |        225 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcPartSigMsgpb\tcPartSigMsg_grpc.pb.go           | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcSetupMsgpb\tcSetupMsg.pb.go                    | Go               |        260 |          9 |         34 |        303 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\msg\tcSetupMsgpb\tcSetupMsg_grpc.pb.go               | Go               |         70 |         23 |         15 |        108 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\normalMsgHandler.go                                  | Go               |        221 |         20 |         41 |        282 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\setupMsgHadler.go                                    | Go               |        196 |         26 |         38 |        260 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\util\util.go                                         | Go               |         11 |          1 |          4 |         16 |
+| \\wsl.localhost\Ubuntu-22.04\home\psyduck\RandomnessBeacon3.0\node\variables.go                                         | Go               |         46 |         38 |         36 |        120 |
+| Total                                                                                                                   |                  |      8,802 |        849 |      1,263 |     10,914 |
++-------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

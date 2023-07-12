@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package errSetupMsgpb;
+
+option go_package = "../errSetupMsgpb";
+
+// The ErrSetupMsgHandle service definition.
+service ErrSetupMsgHandle {
+  // Handles a received ErrSetupMsg message
+  rpc ErrSetupMsgReceive (ErrSetupMsg) returns (ErrSetupMsgResponse) {}
+}
+
+message ErrSetupMsg {
+  int64 id = 1;
+  int64 SecretShareI = 2;
+  string SecretShareV = 3;
+  string GlobalPubKey = 4;
+  string pubPolyBase = 5;
+  repeated string pubPolyCommit = 6;
+}
+
+message ErrSetupMsgResponse {}
