@@ -217,7 +217,7 @@ func SendRMsg(ips []string, r0 *big.Int) {
 	}
 }
 
-func SendGroupMsg(ips []string, groupA, groupB, groupC, timeT, mkA, mkB, mkC, rkA, rkB, rkC, pA, pB, pC int) {
+func SendGroupMsg(ips []string, groupA, groupB, groupC, mkA, mkB, mkC, rkA, rkB, rkC, pA, pB, pC *big.Int, timeT int) {
 	for i, ip := range ips {
 		fmt.Printf("Send group to node %d\n", i)
 
@@ -230,10 +230,10 @@ func SendGroupMsg(ips []string, groupA, groupB, groupC, timeT, mkA, mkB, mkC, rk
 		tc := groupMsgpb.NewGroupMsgHandleClient(conn)
 		ctx, _ := context.WithTimeout(context.Background(), time.Second)
 
-		_, err = tc.GroupMsgReceive(ctx, &groupMsgpb.GroupMsg{GroupA: int64(groupA), GroupB: int64(groupB), GroupC: int64(groupC), TimeT: int64(timeT),
-			MkA: int64(mkA), MkB: int64(mkB), MkC: int64(mkC),
-			RkA: int64(rkA), RkB: int64(rkB), RkC: int64(rkC),
-			PA: int64(pA), PB: int64(pB), PC: int64(pC)})
+		_, err = tc.GroupMsgReceive(ctx, &groupMsgpb.GroupMsg{GroupA: groupA.String(), GroupB: groupB.String(), GroupC: groupC.String(), TimeT: int64(timeT),
+			MkA: mkA.String(), MkB: mkB.String(), MkC: mkC.String(),
+			RkA: rkA.String(), RkB: rkB.String(), RkC: rkC.String(),
+			PA: pA.String(), PB: pB.String(), PC: pC.String()})
 		if err != nil {
 			fmt.Println("Send to", ip)
 			fmt.Println("===>[!!!Collector]Failed to response:", err)
@@ -345,9 +345,9 @@ func main() {
 	// Test for crypto part
 	// binaryquadraticform.TestInit()
 	// binaryquadraticform.TestExp()
-	// maskedMsg, h, M_k, a1, a2, z := timedCommitment.GenerateTC()
-	// fmt.Println(timedCommitment.VerifyTC(maskedMsg, h, M_k, a1, a2, z))
-	// timedCommitment.ForcedOpen(maskedMsg, h)
+	// maskedMsg, h, M_k, a1, a2, z := timedCommitment.GenerateTC(g, m_k, r_k, p, int(*timeT))
+	// fmt.Println(timedCommitment.VerifyTC(int(*timeT), maskedMsg, g, m_k, r_k, p, h, M_k, a1, a2, z))
+	// timedCommitment.ForcedOpen(int(*timeT), maskedMsg, h)
 
 	groupA, groupB, groupC := config.GetGroupParameter()
 	timeT := config.GetTimeParameter()
@@ -364,7 +364,7 @@ func main() {
 
 	SendTcInitMsg(nodes, publicKey, ips, pubKeys, pubPoly)
 	SendErrInitMsg(errnodes, errpublicKey, ips, errpubPoly)
-	SendGroupMsg(ips, groupA, groupB, groupC, timeT, mkA, mkB, mkC, rkA, rkB, rkC, pA, pB, pC)
+	SendGroupMsg(ips, groupA, groupB, groupC, mkA, mkB, mkC, rkA, rkB, rkC, pA, pB, pC, timeT)
 
 	time.Sleep(2 * time.Second)
 	SendRMsg(ips, r0)

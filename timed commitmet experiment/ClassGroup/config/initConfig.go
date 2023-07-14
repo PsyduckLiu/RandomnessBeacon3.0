@@ -5,7 +5,6 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"math/big"
-	"time"
 )
 
 // Hash any type message v, using SHA256
@@ -42,7 +41,7 @@ func InitGroup() {
 	rkexp.Exp(bigTwo, tSubPower, nil)
 	fmt.Printf("===>[InitConfig] 2^t is:%v\n", tPower)
 
-	Start := time.Now()
+	// Start := time.Now()
 	m_k, err := g.Exp(mkexp)
 	if err != nil {
 		panic(fmt.Errorf("===>[ERROR from InitConfig]Generate new BQuadratic Form failed: %s", err))
@@ -53,7 +52,7 @@ func InitGroup() {
 	}
 	fmt.Printf("===>[InitConfig] Mk is (a=%v,b=%v,c=%v,d=%v)\n", m_k.GetA(), m_k.GetB(), m_k.GetC(), m_k.GetDiscriminant())
 	fmt.Printf("===>[InitConfig] Rk is (a=%v,b=%v,c=%v,d=%v)\n", r_k.GetA(), r_k.GetB(), r_k.GetC(), r_k.GetDiscriminant())
-	fmt.Println("init two exp time", float64(time.Since(Start).Milliseconds()))
+	// fmt.Println("init two exp time", float64(time.Since(Start).Milliseconds()))
 
 	// generate proof
 	gHash := new(big.Int).SetBytes(Digest((g.GetA())))
@@ -74,7 +73,7 @@ func InitGroup() {
 	identityC.Div(identityC, big.NewInt(4))
 	identityC.Div(identityC, identityA)
 
-	Start = time.Now()
+	// Start = time.Now()
 	x, _ := binaryquadraticform.NewBQuadraticForm(identityA, identityB, identityC)
 	b2 := new(big.Int)
 	r := big.NewInt(1)
@@ -98,8 +97,8 @@ func InitGroup() {
 		// g.Exp(b2)
 		x, _ = x.Composition(gb)
 	}
-	fmt.Println(b2)
-	fmt.Println("proof time", float64(time.Since(Start).Milliseconds()))
+	// fmt.Println(b2)
+	// fmt.Println("proof time", float64(time.Since(Start).Milliseconds()))
 	proof := x
 	fmt.Println("proof right", proof.GetA(), proof.GetB(), proof.GetC())
 

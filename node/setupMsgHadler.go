@@ -226,23 +226,36 @@ func (gms *groupMsgServer) GroupMsgReceive(ctx context.Context, in *groupMsgpb.G
 	mkA, mkB, mkC, rkA, rkB, rkC := in.GetMkA(), in.GetMkB(), in.GetMkC(), in.GetRkA(), in.GetRkB(), in.GetRkC()
 	pA, pB, pC := in.GetPA(), in.GetPB(), in.GetPC()
 
+	groupAInt, _ := big.NewInt(0).SetString(groupA, 10)
+	groupBInt, _ := big.NewInt(0).SetString(groupB, 10)
+	groupCInt, _ := big.NewInt(0).SetString(groupC, 10)
+	mkAInt, _ := big.NewInt(0).SetString(mkA, 10)
+	mkBInt, _ := big.NewInt(0).SetString(mkB, 10)
+	mkCInt, _ := big.NewInt(0).SetString(mkC, 10)
+	rkAInt, _ := big.NewInt(0).SetString(rkA, 10)
+	rkBInt, _ := big.NewInt(0).SetString(rkB, 10)
+	rkCInt, _ := big.NewInt(0).SetString(rkC, 10)
+	pAInt, _ := big.NewInt(0).SetString(pA, 10)
+	pBInt, _ := big.NewInt(0).SetString(pB, 10)
+	pCInt, _ := big.NewInt(0).SetString(pC, 10)
+
 	// recover the g, m_k, r_k, p
-	g, err = binaryquadraticform.NewBQuadraticForm(big.NewInt(int64(groupA)), big.NewInt(int64(groupB)), big.NewInt(int64(groupC)))
+	g, err = binaryquadraticform.NewBQuadraticForm(groupAInt, groupBInt, groupCInt)
 	fmt.Printf("[Setup] The group element g is (a=%v,b=%v,c=%v,d=%v)\n", g.GetA(), g.GetB(), g.GetC(), g.GetDiscriminant())
 	if err != nil {
 		panic(fmt.Errorf("[!!!Error GroupMsgReceive] Generate new BQuadratic Form g failed: %s", err))
 	}
-	m_k, err = binaryquadraticform.NewBQuadraticForm(big.NewInt(int64(mkA)), big.NewInt(int64(mkB)), big.NewInt(int64(mkC)))
+	m_k, err = binaryquadraticform.NewBQuadraticForm(mkAInt, mkBInt, mkCInt)
 	fmt.Printf("[Setup] Mk is (a=%v,b=%v,c=%v,d=%v)\n", m_k.GetA(), m_k.GetB(), m_k.GetC(), m_k.GetDiscriminant())
 	if err != nil {
 		panic(fmt.Errorf("[!!!Error GroupMsgReceive] Generate new BQuadratic Form Mk failed: %s", err))
 	}
-	r_k, err = binaryquadraticform.NewBQuadraticForm(big.NewInt(int64(rkA)), big.NewInt(int64(rkB)), big.NewInt(int64(rkC)))
+	r_k, err = binaryquadraticform.NewBQuadraticForm(rkAInt, rkBInt, rkCInt)
 	fmt.Printf("[Setup] Rk is (a=%v,b=%v,c=%v,d=%v)\n", r_k.GetA(), r_k.GetB(), r_k.GetC(), r_k.GetDiscriminant())
 	if err != nil {
 		panic(fmt.Errorf("[!!!Error GroupMsgReceive] Generate new BQuadratic Form Rk failed: %s", err))
 	}
-	p, err = binaryquadraticform.NewBQuadraticForm(big.NewInt(int64(pA)), big.NewInt(int64(pB)), big.NewInt(int64(pC)))
+	p, err = binaryquadraticform.NewBQuadraticForm(pAInt, pBInt, pCInt)
 	fmt.Printf("[Setup] Proof is (a=%v,b=%v,c=%v,d=%v)\n", p.GetA(), p.GetB(), p.GetC(), p.GetDiscriminant())
 	if err != nil {
 		panic(fmt.Errorf("[!!!Error GroupMsgReceive] Generate new BQuadratic Form Proof failed: %s", err))

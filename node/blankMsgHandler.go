@@ -235,7 +235,7 @@ func FillBlank(currentRound int64, errTimer *time.Ticker) {
 		}
 	}
 
-	errTimer.Reset(2 * time.Second)
+	errTimer.Reset(10 * time.Second)
 }
 
 // Leader sends the blank require message to all other nodes

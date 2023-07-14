@@ -15,10 +15,10 @@ func main() {
 	verifyElapsed := 0.0
 	openElapsed := 0.0
 
-	a := big.NewInt(33256910)
+	a := big.NewInt(92036827)
 	b := big.NewInt(21)
-	c, _ := big.NewInt(0).SetString("1754617848805357923645442866595", 10)
-	t := 18
+	c, _ := big.NewInt(0).SetString("681582962329953011041792857049", 10)
+	t := 10
 
 	// search for group
 	// var delta *big.Int

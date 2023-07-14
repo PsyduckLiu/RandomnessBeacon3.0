@@ -12,6 +12,7 @@ import (
 func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	*big.Int, *binaryquadraticform.BQuadraticForm, *binaryquadraticform.BQuadraticForm,
 	*binaryquadraticform.BQuadraticForm, *binaryquadraticform.BQuadraticForm, *big.Int) {
+	// bigOne := big.NewInt(1)
 	bigTwo := big.NewInt(2)
 	d := g.GetDiscriminant()
 
@@ -23,13 +24,15 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	fmt.Println("verify group time", float64(time.Since(Start).Milliseconds()))
 
 	// calculate the upper bound of alpha
-	nSqrt := new(big.Int)
+	// nSqrt := new(big.Int)
 	dAbs := new(big.Int)
 	dAbs.Abs(d)
 	upperBound := new(big.Int)
-	nSqrt.Sqrt(dAbs)
-	upperBound.Div(nSqrt, bigTwo)
+	upperBound.Sqrt(dAbs)
+	// nSqrt.Sqrt(dAbs)
+	// upperBound.Div(nSqrt, bigTwo)
 	fmt.Printf("===>[GenerateTC]Upper bound of alpha is %v.\n", upperBound)
+	fmt.Println("upperBound time", float64(time.Since(Start).Milliseconds()))
 
 	// get random alpha
 	alpha, err := rand.Int(rand.Reader, upperBound)
@@ -46,6 +49,7 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 		panic(fmt.Errorf("===>[ERROR from GenerateTC]Generate random message failed:%s", err))
 	}
 	fmt.Println("===>[GenerateTC]msg is", msg)
+	fmt.Println("message time", float64(time.Since(Start).Milliseconds()))
 
 	// xor msg and R_k, gets c
 	h, err := g.Exp(alpha)
@@ -60,6 +64,7 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	if err != nil {
 		panic(fmt.Errorf("===>[ERROR from GenerateTC]Generate new BQuadratic Form failed: %s", err))
 	}
+	fmt.Println("R_k time", float64(time.Since(Start).Milliseconds()))
 
 	// TODO
 	// F function to de modeified
@@ -70,7 +75,9 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	// evalute a series of parameters(a1, a2, a3, z) for verification
 	wupperBound := new(big.Int)
 	wupperBound.Mul(upperBound, dAbs)
+	// wupperBound.Set(dAbs)
 	w, _ := rand.Int(rand.Reader, wupperBound)
+	// w, _ := rand.Int(rand.Reader, upperBound)
 	a1, err := g.Exp(w)
 	if err != nil {
 		panic(fmt.Errorf("===>[ERROR from GenerateTC]Generate new BQuadratic Form failed: %s", err))
@@ -79,6 +86,7 @@ func GenerateTC(g, m_k, r_k, p *binaryquadraticform.BQuadraticForm, t int) (
 	if err != nil {
 		panic(fmt.Errorf("===>[ERROR from GenerateTC]Generate new BQuadratic Form failed: %s", err))
 	}
+	fmt.Println("a2 time", float64(time.Since(Start).Milliseconds()))
 
 	gHash := new(big.Int).SetBytes(util.Digest((g.GetA())))
 	hHash := new(big.Int).SetBytes(util.Digest((h.GetA())))

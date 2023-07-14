@@ -38,6 +38,8 @@ type tcCompleteSigMsgServer struct {
 // tcMsgReceive implements tcMsgpb.TcMsgReceive
 // Nodes handle the timed commitment received from the leader
 func (tms *tcMsgServer) TcMsgReceive(ctx context.Context, in *tcMsgpb.TcMsg) (*tcMsgpb.TcMsgResponse, error) {
+	receiveBandwidth.Add(receiveBandwidth, big.NewInt(int64(len(in.String()))))
+
 	// verify the signature of the message
 	rawtcMsg := &tcMsgpb.TcMsg{Round: in.Round, MaskedMsg: in.MaskedMsg,
 		HA: in.HA, HB: in.HB, HC: in.HC,
@@ -72,25 +74,38 @@ func (tms *tcMsgServer) TcMsgReceive(ctx context.Context, in *tcMsgpb.TcMsg) (*t
 	z := new(big.Int)
 	z.SetString(in.GetZ(), 10)
 
-	h, err := binaryquadraticform.NewBQuadraticForm(big.NewInt(in.GetHA()), big.NewInt(in.GetHB()), big.NewInt(in.GetHC()))
+	hAInt, _ := big.NewInt(0).SetString(in.GetHA(), 10)
+	hBInt, _ := big.NewInt(0).SetString(in.GetHB(), 10)
+	hCInt, _ := big.NewInt(0).SetString(in.GetHC(), 10)
+	MkAInt, _ := big.NewInt(0).SetString(in.GetMkA(), 10)
+	MkBInt, _ := big.NewInt(0).SetString(in.GetMkB(), 10)
+	MkCInt, _ := big.NewInt(0).SetString(in.GetMkC(), 10)
+	A1AInt, _ := big.NewInt(0).SetString(in.GetA1A(), 10)
+	A1BInt, _ := big.NewInt(0).SetString(in.GetA1B(), 10)
+	A1CInt, _ := big.NewInt(0).SetString(in.GetA1C(), 10)
+	A2AInt, _ := big.NewInt(0).SetString(in.GetA2A(), 10)
+	A2BInt, _ := big.NewInt(0).SetString(in.GetA2B(), 10)
+	A2CInt, _ := big.NewInt(0).SetString(in.GetA2C(), 10)
+
+	h, err := binaryquadraticform.NewBQuadraticForm(hAInt, hBInt, hCInt)
 	fmt.Printf("[TcMsgReceive] The group element h is (a=%v,b=%v,c=%v,d=%v)\n", h.GetA(), h.GetB(), h.GetC(), h.GetDiscriminant())
 	if err != nil {
 		fmt.Printf("===>[!!!Error TcMsgReceive] Generate new BQuadratic Form h failed: %s", err)
 		return &tcMsgpb.TcMsgResponse{}, nil
 	}
-	M_k, err := binaryquadraticform.NewBQuadraticForm(big.NewInt(in.GetMkA()), big.NewInt(in.GetMkB()), big.NewInt(in.GetMkC()))
+	M_k, err := binaryquadraticform.NewBQuadraticForm(MkAInt, MkBInt, MkCInt)
 	fmt.Printf("[TcMsgReceive] The group element M_K is (a=%v,b=%v,c=%v,d=%v)\n", M_k.GetA(), M_k.GetB(), M_k.GetC(), M_k.GetDiscriminant())
 	if err != nil {
 		fmt.Printf("===>[!!!Error TcMsgReceive] Generate new BQuadratic Form M_K failed: %s", err)
 		return &tcMsgpb.TcMsgResponse{}, nil
 	}
-	a1, err := binaryquadraticform.NewBQuadraticForm(big.NewInt(in.GetA1A()), big.NewInt(in.GetA1B()), big.NewInt(in.GetA1C()))
+	a1, err := binaryquadraticform.NewBQuadraticForm(A1AInt, A1BInt, A1CInt)
 	fmt.Printf("[TcMsgReceive] The group element a1 is (a=%v,b=%v,c=%v,d=%v)\n", a1.GetA(), a1.GetB(), a1.GetC(), a1.GetDiscriminant())
 	if err != nil {
 		fmt.Printf("===>[!!!Error TcMsgReceive] Generate new BQuadratic Form a1 failed: %s", err)
 		return &tcMsgpb.TcMsgResponse{}, nil
 	}
-	a2, err := binaryquadraticform.NewBQuadraticForm(big.NewInt(in.GetA2A()), big.NewInt(in.GetA2B()), big.NewInt(in.GetA2C()))
+	a2, err := binaryquadraticform.NewBQuadraticForm(A2AInt, A2BInt, A2CInt)
 	fmt.Printf("[TcMsgReceive] The group element a2 is (a=%v,b=%v,c=%v,d=%v)\n", a2.GetA(), a2.GetB(), a2.GetC(), a2.GetDiscriminant())
 	if err != nil {
 		fmt.Printf("===>[!!!Error TcMsgReceive] Generate new BQuadratic Form a2 failed: %s", err)
@@ -125,6 +140,8 @@ func (tms *tcMsgServer) TcMsgReceive(ctx context.Context, in *tcMsgpb.TcMsg) (*t
 // tcPartSigMsgReceive implements tcPartSigMsgpb.TcPartSigMsgReceive
 // Leader handles the partial signatures for the timed commitment from all other nodes
 func (tpsms *tcPartSigMsgServer) TcPartSigMsgReceive(ctx context.Context, in *tcPartSigMsgpb.TcPartSigMsg) (*tcPartSigMsgpb.TcPartSigMsgResponse, error) {
+	receiveBandwidth.Add(receiveBandwidth, big.NewInt(int64(len(in.String()))))
+
 	sig, err := base64.StdEncoding.DecodeString(in.GetSig())
 	if err != nil {
 		fmt.Printf("[!!!Error TcPartSigMsgReceive] DecodeString error: %s", err)
@@ -147,6 +164,8 @@ func (tpsms *tcPartSigMsgServer) TcPartSigMsgReceive(ctx context.Context, in *tc
 // tcCompleteSigMsgReceive implements tcCompleteSigMsgpb.TcCompleteSigMsgReceive
 // Nodes handle the complete signatures for the timed commitment from the leader
 func (tfsms *tcCompleteSigMsgServer) TcCompleteSigMsgReceive(ctx context.Context, in *tcCompleteSigMsgpb.TcCompleteSigMsg) (*tcCompleteSigMsgpb.TcCompleteSigMsgResponse, error) {
+	receiveBandwidth.Add(receiveBandwidth, big.NewInt(int64(len(in.String()))))
+
 	sig, err := base64.StdEncoding.DecodeString(in.GetSig())
 	if err != nil {
 		fmt.Printf("[!!!Error TcCompleteSigMsgReceive] DecodeString error: %s", err)
@@ -186,10 +205,10 @@ func SendTCMsg(maskedMsg *big.Int, h, M_k, a1, a2 *binaryquadraticform.BQuadrati
 				ctx, _ := context.WithTimeout(context.Background(), time.Second)
 
 				tcMsg := &tcMsgpb.TcMsg{Round: int64(round), MaskedMsg: maskedMsg.String(),
-					HA: h.GetA().Int64(), HB: h.GetB().Int64(), HC: h.GetC().Int64(),
-					MkA: M_k.GetA().Int64(), MkB: M_k.GetB().Int64(), MkC: M_k.GetC().Int64(),
-					A1A: a1.GetA().Int64(), A1B: a1.GetB().Int64(), A1C: a1.GetC().Int64(),
-					A2A: a2.GetA().Int64(), A2B: a2.GetB().Int64(), A2C: a2.GetC().Int64(),
+					HA: h.GetA().String(), HB: h.GetB().String(), HC: h.GetC().String(),
+					MkA: M_k.GetA().String(), MkB: M_k.GetB().String(), MkC: M_k.GetC().String(),
+					A1A: a1.GetA().String(), A1B: a1.GetB().String(), A1C: a1.GetC().String(),
+					A2A: a2.GetA().String(), A2B: a2.GetB().String(), A2C: a2.GetC().String(),
 					Z: z.String(), Id: *Id}
 
 				marshaledtcMsg, err := json.Marshal(tcMsg)
@@ -212,6 +231,7 @@ func SendTCMsg(maskedMsg *big.Int, h, M_k, a1, a2 *binaryquadraticform.BQuadrati
 					continue
 				}
 
+				sendBandwidth.Add(sendBandwidth, big.NewInt(int64(len(tcMsg.String()))))
 				fmt.Printf("[SendTCMsg] Successfully send a new TC to node %d\n", i)
 			}
 		}
@@ -241,6 +261,7 @@ func SendPartSig(partSig []byte) {
 			fmt.Println("[!!!Error SendPartSig] Failed to send:", err)
 			return
 		} else {
+			sendBandwidth.Add(sendBandwidth, big.NewInt(int64(len(tcPartSigMsg.String()))))
 			fmt.Printf("[SendPartSig] Successfully send a new partSig to node %d\n", int(round)%n)
 		}
 	}
@@ -273,6 +294,7 @@ func SendCompleteSig(completeSig []byte, requireRound int64) {
 					fmt.Println("[!!!Error SendCompleteSig] Failed to send:", err)
 					continue
 				} else {
+					sendBandwidth.Add(sendBandwidth, big.NewInt(int64(len(tcCompleteSigMsg.String()))))
 					fmt.Printf("[SendCompleteSig] Successfully send a new completeSig to node %d\n", i)
 				}
 			}

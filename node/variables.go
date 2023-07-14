@@ -117,3 +117,11 @@ var errCompleteSet = make(map[int][]byte)
 
 // badNode: store the indices of verified malicious nodes.
 var badNode = make([]int, 0)
+
+var bigZero = big.NewInt(0)
+
+// sendBandwidth: count the total bandwidth cost
+var sendBandwidth = big.NewInt(0)
+
+// receiveBandwidth: count the total bandwidth cost
+var receiveBandwidth = big.NewInt(0)

@@ -11,19 +11,19 @@ service GroupMsgHandle {
 }
 
 message GroupMsg {
-  int64 groupA = 1;
-  int64 groupB = 2;
-  int64 groupC = 3;
+  string groupA = 1;
+  string groupB = 2;
+  string groupC = 3;
 	int64 timeT = 4;
-	int64 mkA = 5;
-  int64 mkB = 6;
-  int64 mkC = 7;
-  int64 rkA = 8;
-  int64 rkB = 9;
-  int64 rkC  = 10;
-	int64 pA = 11;
-  int64 pB = 12;
-  int64 pC  = 13;
+	string mkA = 5;
+  string mkB = 6;
+  string mkC = 7;
+  string rkA = 8;
+  string rkB = 9;
+  string rkC  = 10;
+	string pA = 11;
+  string pB = 12;
+  string pC  = 13;
 }
 
 message GroupMsgResponse {}

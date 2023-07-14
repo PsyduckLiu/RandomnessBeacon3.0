@@ -99,6 +99,7 @@ func main() {
 		if p.GetA() == nil {
 			continue
 		} else {
+			// time.Sleep(10 * time.Second)
 			if init {
 				n = len(*ips)
 				tcT = 2*n/3 + 1
@@ -130,7 +131,7 @@ func main() {
 					tcSet[idInt] = marshaledTC
 					SendTCMsg(maskedMsg, h, M_k, a1, a2, z)
 				}
-				initTimer.Reset(1 * time.Second)
+				initTimer.Reset(5 * time.Second)
 			}
 
 			select {
@@ -158,7 +159,7 @@ func main() {
 					tcSet[idInt] = marshaledTC
 					SendTCMsg(maskedMsg, h, M_k, a1, a2, z)
 				}
-				initTimer.Reset(1 * time.Second)
+				initTimer.Reset(5 * time.Second)
 
 			case <-initTimer.C:
 				initTimer.Stop()
@@ -174,10 +175,10 @@ func main() {
 
 				if round%n != idInt {
 					SendPartSig(partSig)
-					sigProposalTimer.Reset(2 * time.Second)
+					sigProposalTimer.Reset(10 * time.Second)
 				} else {
 					tcPartSigSet = append(tcPartSigSet, partSig)
-					tcProposalTimer.Reset(1 * time.Second)
+					tcProposalTimer.Reset(5 * time.Second)
 				}
 
 			case <-tcProposalTimer.C:
@@ -197,13 +198,20 @@ func main() {
 						fmt.Println("[Leader] Recover then Verify pass")
 						tcCompleteSigSet[idInt] = sig
 						SendCompleteSig(sig, int64(round))
-						sigProposalTimer.Reset(1 * time.Second)
+						sigProposalTimer.Reset(5 * time.Second)
 					}
 				}
 
 			case <-sigProposalTimer.C:
 				sigProposalTimer.Stop()
 				tcPartSigSet = make([][]byte, 0)
+
+				util.WriteFile("bandwidth/result"+id, []byte(sendBandwidth.String()+"\n"), 0666)
+				util.WriteFile("bandwidth/result"+id, []byte(receiveBandwidth.String()+"\n"), 0666)
+				fmt.Printf("[Node] Send %v bytes", sendBandwidth)
+				fmt.Printf("[Node] Receive %v bytes", receiveBandwidth)
+				sendBandwidth.Set(bigZero)
+				receiveBandwidth.Set(bigZero)
 
 				if round >= n {
 					fmt.Println("[Node] R0 is", R0)
@@ -240,7 +248,7 @@ func main() {
 					errPartSet[round%n] = nil
 				}
 
-				startTimer.Reset(1 * time.Second)
+				startTimer.Reset(5 * time.Second)
 
 			case <-errTimer.C:
 				errTimer.Stop()

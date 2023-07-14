@@ -8,7 +8,6 @@ import (
 )
 
 func VerifyTC(t int, maskedMsg *big.Int, g, m_k, r_k, p, h, M_k, a1, a2 *binaryquadraticform.BQuadraticForm, z *big.Int) bool {
-	bigTwo := big.NewInt(2)
 	d := g.GetDiscriminant()
 
 	check := VerifyGroup(t, p, g, m_k, r_k)
@@ -17,12 +16,14 @@ func VerifyTC(t int, maskedMsg *big.Int, g, m_k, r_k, p, h, M_k, a1, a2 *binaryq
 	}
 
 	// calculate the upper bound of alpha
-	nSqrt := new(big.Int)
+	// nSqrt := new(big.Int)
 	dAbs := new(big.Int)
 	dAbs.Abs(d)
 	upperBound := new(big.Int)
-	nSqrt.Sqrt(dAbs)
-	upperBound.Div(nSqrt, bigTwo)
+	upperBound.Sqrt(dAbs)
+	// nSqrt.Sqrt(dAbs)
+
+	// upperBound.Div(nSqrt, bigTwo)
 	fmt.Printf("===>[VerifyTC]Upper bound of alpha is %v.\n", upperBound)
 
 	gHash := new(big.Int).SetBytes(util.Digest((g.GetA())))
