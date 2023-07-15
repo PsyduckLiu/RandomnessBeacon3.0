@@ -75,6 +75,7 @@ func InitGroup() {
 
 	// Start = time.Now()
 	x, _ := binaryquadraticform.NewBQuadraticForm(identityA, identityB, identityC)
+
 	b2 := new(big.Int)
 	r := big.NewInt(1)
 	r2 := new(big.Int)
@@ -92,10 +93,22 @@ func InitGroup() {
 		// }
 
 		r.Mod(r2, l)
-		x, _ = x.Exp(bigTwo)
-		gb, _ := g.Exp(b2)
+		x, err = x.Exp(bigTwo)
+		if err != nil {
+			fmt.Println("1", err)
+		}
+
+		gb, err := g.Exp(b2)
+		if err != nil {
+			fmt.Println("2", err)
+		}
 		// g.Exp(b2)
-		x, _ = x.Composition(gb)
+
+		x, err = x.Composition(gb)
+		if err != nil {
+			fmt.Println(x.GetDiscriminant())
+			fmt.Println("3", err)
+		}
 	}
 	// fmt.Println(b2)
 	// fmt.Println("proof time", float64(time.Since(Start).Milliseconds()))
